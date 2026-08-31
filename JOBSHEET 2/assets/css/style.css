@@ -13,7 +13,7 @@ body {
 }
 
 a {
-  color: #176b3a;
+  color: #1d5b8a;
   text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a:hover {
 
 /* ===== Header & Navbar (Flexbox) ===== */
 header {
-  background-color: #176b3a;
+  background-color: #1d5b8a;
   color: #fff;
   padding: 1rem 1.5rem;
   display: flex;
@@ -64,13 +64,13 @@ section {
 
 section h2 {
   margin-bottom: 1rem;
-  color: #176b3a;
+  color: #1d5b8a;
 }
 
 /* ===== Kartu Statistik (CSS Grid) ===== */
 main section:nth-of-type(2) {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
@@ -83,14 +83,14 @@ main section:nth-of-type(2) article {
 
 main section:nth-of-type(2) article h3 {
   font-size: 0.95rem;
-  color: #176b3a;
+  color: #55677a;
   margin-bottom: 0.5rem;
 }
 
 main section:nth-of-type(2) article p {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #176b3a;
+  color: #1d5b8a;
 }
 
 /* ===== Tabel ===== */
@@ -107,7 +107,7 @@ td {
 }
 
 thead {
-  background-color: #176b3a;
+  background-color: #1d5b8a;
   color: #fff;
 }
 
@@ -161,7 +161,7 @@ form select {
 }
 
 form button[type="submit"] {
-  background-color: #176b3a;
+  background-color: #1d5b8a;
   color: #fff;
   border: none;
   padding: 0.6rem 1.5rem;
@@ -171,13 +171,13 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-  background-color: #176b3a;
+  background-color: #164869;
 }
 
 /* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 1.25rem;
-  color: #f0ad4e;
+  color: #7a8794;
   font-size: 0.9rem;
 }
