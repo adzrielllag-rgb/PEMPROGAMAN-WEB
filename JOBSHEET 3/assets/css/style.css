@@ -242,4 +242,10 @@ footer {
   form select {
     max-width: 100%;
   }
+
+  @media (min-width: 1400px) {
+    main {
+      max-width: 1000px;
+    }
+  }
 }
