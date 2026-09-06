@@ -80,3 +80,19 @@
     |  Bumi Manusia      | 15/07    | -       | Dipinjam    |
     +--------------------------------------+
     `
+
+## Wireframe Registrasi Anggota Baru
+
++--------------------------------------+
+| Registrasi Anggota Baru |
+|--------------------------------------|
+| |
+| Nama Lengkap : [______________] |
+| Alamat : [______________] |
+| No. Telepon : [______________] |
+| Email : [______________] |
+| |
+| [ Daftar ] |
+| |
+| Sudah punya akun? Login di sini |
++--------------------------------------+
