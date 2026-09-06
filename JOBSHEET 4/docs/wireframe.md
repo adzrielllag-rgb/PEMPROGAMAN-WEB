@@ -104,3 +104,17 @@
 `-> [Periksa Status Pinjaman] -> [Ditemukan Tunggakan]`
 
 `-> [Tampilkan Detail Pinjaman] -> [Kembali ke Dashboard]`
+
+---
+
+## Edge Case Tambahan
+
+1. Petugas mencoba meminjamkan buku yang sama kepada anggota yang sama dua kali berturut-turut.
+
+2. Petugas mencoba meminjamkan buku yang stoknya sudah habis.
+
+3. Petugas mencoba meminjamkan buku kepada anggota yang masih memiliki pinjaman aktif.
+
+4. Petugas mencari anggota yang tidak terdaftar.
+
+5. Petugas melakukan pengembalian terhadap transaksi yang sudah dikembalikan.
