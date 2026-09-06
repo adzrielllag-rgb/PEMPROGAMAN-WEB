@@ -248,10 +248,4 @@ footer {
       max-width: 1000px;
     }
   }
-
-  /* ===== Responsive Code Block ===== */
-  .pre-responsive {
-    overflow-x: auto;
-    max-width: 100%;
-  }
 }
