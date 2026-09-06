@@ -96,3 +96,11 @@
 | |
 | Sudah punya akun? Login di sini |
 +--------------------------------------+
+
+### User Flow — Pencarian Anggota yang Tunggak
+
+`[Petugas Login] -> [Dashboard] -> [Menu "Anggota"] -> [Cari Anggota]`
+
+`-> [Periksa Status Pinjaman] -> [Ditemukan Tunggakan]`
+
+`-> [Tampilkan Detail Pinjaman] -> [Kembali ke Dashboard]`
