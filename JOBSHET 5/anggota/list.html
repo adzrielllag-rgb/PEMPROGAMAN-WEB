@@ -38,7 +38,6 @@
             placeholder="Ketik nama anggota..."
           />
         </div>
-        <p id="loading-indicator" style="display: none">Memuat data...</p>
         <div class="table-responsive">
           <table>
             <thead>
@@ -51,7 +50,26 @@
               </tr>
             </thead>
             <tbody>
-              <!-- Baris diisi dinamis oleh assets/js/anggota.js via fetch('../data/anggota.json') -->
+              <tr>
+                <td>A001</td>
+                <td>Siti Aminah</td>
+                <td>Malang</td>
+                <td>0812xxxx</td>
+                <td>
+                  <button type="button">Edit</button>
+                  <button type="button" class="btn-hapus">Hapus</button>
+                </td>
+              </tr>
+              <tr>
+                <td>A002</td>
+                <td>Budi Santoso</td>
+                <td>Batu</td>
+                <td>0813xxxx</td>
+                <td>
+                  <button type="button">Edit</button>
+                  <button type="button" class="btn-hapus">Hapus</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -59,9 +77,8 @@
     </main>
 
     <footer>
-      <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 6</p>
+      <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 5</p>
     </footer>
     <script src="../assets/js/app.js"></script>
-    <script src="../assets/js/anggota.js"></script>
   </body>
 </html>
