@@ -27,19 +27,44 @@ function initHapusConfirm() {
 function initTableFilter() {
   const input = document.getElementById("search-input");
   const table = document.querySelector(".table-responsive table");
+  const counter = document.getElementById("book-counter");
+
   if (!input || !table) return;
+
+  function updateCounter() {
+    const rows = table.querySelectorAll("tbody tr");
+    let jumlahTampil = 0;
+
+    rows.forEach(function (row) {
+      if (row.style.display !== "none") {
+        jumlahTampil++;
+      }
+    });
+
+    if (counter) {
+      counter.textContent =
+        "Menampilkan " + jumlahTampil + " dari " + rows.length + " buku";
+    }
+  }
 
   input.addEventListener("keyup", function () {
     const keyword = input.value.toLowerCase();
     const rows = table.querySelectorAll("tbody tr");
+
     rows.forEach(function (row) {
       const judul = row.querySelector("td");
+
       if (!judul) return;
 
       const teksJudul = judul.textContent.toLowerCase();
+
       row.style.display = teksJudul.includes(keyword) ? "" : "none";
     });
+
+    updateCounter();
   });
+
+  updateCounter();
 }
 
 // ===== Validasi form (client-side) =====
