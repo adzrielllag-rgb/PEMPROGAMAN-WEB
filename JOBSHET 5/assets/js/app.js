@@ -100,6 +100,18 @@ function initValidasiForm() {
       }
     }
 
+    const isbn = form.querySelector("[name='isbn']");
+
+    if (isbn) {
+      const nilai = isbn.value.trim();
+      if (nilai !== "" && !/^[0-9-]+$/.test(nilai)) {
+        tampilkanError(isbn, "ISBN hanya boleh berisi angka dan tanda hubung.");
+        valid = false;
+      } else {
+        hapusError(isbn);
+      }
+    }
+
     if (!valid) {
       e.preventDefault();
     }
