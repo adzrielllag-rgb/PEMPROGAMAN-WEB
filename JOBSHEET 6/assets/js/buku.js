@@ -9,7 +9,7 @@ async function muatData(namaFile, namaArray, kolom) {
   tbody.innerHTML = "";
 
   try {
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulasi delay 3 detik
 
     const res = await fetch("../data/" + namaFile);
 
