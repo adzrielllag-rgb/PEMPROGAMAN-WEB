@@ -1,41 +1,45 @@
-// Mengambil & menampilkan Daftar Buku secara asinkron dari data/buku.json
-async function muatDaftarBuku() {
+// Fungsi generic untuk mengambil dan menampilkan data JSON
+async function muatData(namaFile, namaArray, kolom) {
   const tbody = document.querySelector(".table-responsive table tbody");
   const loading = document.getElementById("loading-indicator");
+
   if (!tbody) return;
 
   loading.style.display = "block";
   tbody.innerHTML = "";
 
   try {
-    // simulasi delay jaringan agar loading indicator terlihat
     await new Promise((resolve) => setTimeout(resolve, 600));
 
-    const res = await fetch("../data/buku.json");
+    const res = await fetch("../data/" + namaFile);
+
     if (!res.ok) {
       throw new Error("Gagal mengambil data (status " + res.status + ")");
     }
-    const daftarBuku = await res.json();
 
-    daftarBuku.forEach(function (buku) {
+    const data = await res.json();
+
+    data.forEach(function (item) {
       const tr = document.createElement("tr");
+
       tr.innerHTML =
         "<td>" +
-        buku.judul +
+        item[kolom[0]] +
         "</td>" +
         "<td>" +
-        buku.pengarang +
+        item[kolom[1]] +
         "</td>" +
         "<td>" +
-        buku.tahun +
+        item[kolom[2]] +
         "</td>" +
         "<td>" +
-        buku.stok +
+        item[kolom[3]] +
         "</td>" +
         "<td>" +
         '<button type="button">Edit</button> ' +
         '<button type="button" class="btn-hapus">Hapus</button>' +
         "</td>";
+
       tbody.appendChild(tr);
     });
   } catch (err) {
@@ -46,12 +50,33 @@ async function muatDaftarBuku() {
   }
 }
 
+// Memuat daftar buku
+async function muatDaftarBuku() {
+  await muatData("buku.json", "daftarBuku", [
+    "judul",
+    "pengarang",
+    "tahun",
+    "stok",
+  ]);
+}
+
+// Memuat daftar anggota
+async function muatDaftarAnggota() {
+  await muatData("anggota.json", "daftarAnggota", [
+    "no_anggota",
+    "nama",
+    "alamat",
+    "no_hp",
+  ]);
+}
+
+// Menentukan data berdasarkan halaman
 document.addEventListener("DOMContentLoaded", function () {
-  muatDaftarBuku();
+  if (document.title.includes("Daftar Buku")) {
+    muatDaftarBuku();
+  }
 
-  const btn = document.getElementById("btn-muat-ulang");
-
-  if (btn) {
-    btn.addEventListener("click", muatDaftarBuku);
+  if (document.title.includes("Daftar Anggota")) {
+    muatDaftarAnggota();
   }
 });
