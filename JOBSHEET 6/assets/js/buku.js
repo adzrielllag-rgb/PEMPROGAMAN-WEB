@@ -36,6 +36,9 @@ async function muatData(namaFile, namaArray, kolom) {
         item[kolom[3]] +
         "</td>" +
         "<td>" +
+        item[kolom[4]] +
+        "</td>" +
+        "<td>" +
         '<button type="button">Edit</button> ' +
         '<button type="button" class="btn-hapus">Hapus</button>' +
         "</td>";
@@ -44,7 +47,7 @@ async function muatData(namaFile, namaArray, kolom) {
     });
   } catch (err) {
     tbody.innerHTML =
-      '<tr><td colspan="5">Gagal memuat data: ' + err.message + "</td></tr>";
+      '<tr><td colspan="6">Gagal memuat data: ' + err.message + "</td></tr>";
   } finally {
     loading.style.display = "none";
   }
@@ -57,6 +60,7 @@ async function muatDaftarBuku() {
     "pengarang",
     "tahun",
     "stok",
+    "kategori",
   ]);
 }
 
