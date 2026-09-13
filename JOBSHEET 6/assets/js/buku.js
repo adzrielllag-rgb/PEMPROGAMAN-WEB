@@ -46,4 +46,12 @@ async function muatDaftarBuku() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", muatDaftarBuku);
+document.addEventListener("DOMContentLoaded", function () {
+  muatDaftarBuku();
+
+  const btn = document.getElementById("btn-muat-ulang");
+
+  if (btn) {
+    btn.addEventListener("click", muatDaftarBuku);
+  }
+});
