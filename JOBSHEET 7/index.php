@@ -8,6 +8,12 @@ $totalAnggota = count($_SESSION['anggota'] ?? []);
         <section>
             <h2>Selamat Datang di Sistem Perpustakaan Mini</h2>
             <p>Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
+
+            <p>
+    <a href="reset.php" onclick="return confirm('Yakin ingin menghapus semua data?');">
+        <button type="button">Reset Data</button>
+    </a>
+</p>
         </section>
 
         <section>
