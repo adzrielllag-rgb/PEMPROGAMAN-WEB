@@ -7,15 +7,26 @@ $alamat = trim($_POST['alamat'] ?? '');
 $noHp = trim($_POST['no_hp'] ?? '');
 
 $errors = [];
+
 if ($nama === '') {
     $errors[] = "Nama wajib diisi.";
 }
+
 if ($noAnggota === '') {
     $errors[] = "No. Anggota wajib diisi.";
 }
 
+// Validasi nomor HP
+if ($noHp !== '' && !preg_match('/^[0-9]+$/', $noHp)) {
+    $errors[] = "No. HP hanya boleh berisi angka.";
+}
+
 if (!empty($errors)) {
-    $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
+    $_SESSION['flash'] = [
+        'type' => 'error',
+        'pesan' => implode(' ', $errors)
+    ];
+
     header('Location: tambah.php');
     exit;
 }
@@ -31,6 +42,10 @@ $_SESSION['anggota'][] = [
     'no_hp' => $noHp,
 ];
 
-$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
+$_SESSION['flash'] = [
+    'type' => 'success',
+    'pesan' => 'Anggota berhasil ditambahkan.'
+];
+
 header('Location: list.php');
 exit;
