@@ -1,4 +1,3 @@
-
 -- Jobsheet 8: skema awal database simpus_mini (PostgreSQL)
 -- Jalankan setelah membuat database, misal:
 --   createdb simpus_mini
@@ -21,6 +20,3 @@ CREATE TABLE IF NOT EXISTS anggota (
     alamat VARCHAR(255),
     no_hp VARCHAR(30)
 );
-
-ALTER TABLE buku
-ADD COLUMN tanggal_ditambahkan TIMESTAMP DEFAULT NOW();
