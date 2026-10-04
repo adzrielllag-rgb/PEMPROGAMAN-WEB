@@ -66,10 +66,10 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                     <?php else: ?>
                         <?php foreach ($daftarAnggota as $anggota): ?>
                         <tr>
-                            <td><?php echo ($anggota['no_anggota']); ?></td>
-                            <td><?php echo ($anggota['nama']); ?></td>
-                            <td><?php echo ($anggota['alamat']); ?></td>
-                            <td><?php echo ($anggota['no_hp']); ?></td>
+                            <td><?php echo e($anggota['no_anggota']); ?></td>
+                            <td><?php echo e($anggota['nama']); ?></td>
+                            <td><?php echo e($anggota['alamat']); ?></td>
+                            <td><?php echo e($anggota['no_hp']); ?></td>
                            <td>
     <?php if ($_SESSION['role'] === 'admin'): ?>
 
@@ -78,7 +78,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
         </a>
 
         <form class="form-hapus" method="post" action="hapus.php">
-            <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo  e($anggota['id']); ?>">
 
             <button type="submit" class="btn-hapus">
                 Hapus
