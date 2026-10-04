@@ -2,6 +2,7 @@
 require __DIR__ . '/../includes/auth.php';
 $page_title = "Tambah Buku";
 include __DIR__ . '/../includes/header.php';
+require __DIR__ . '/../includes/csrf.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
