@@ -21,6 +21,36 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['nama'] = $user['nama'];
     $_SESSION['role'] = $user['role'];
+
+    if (isset($_POST['remember'])) {
+    $token = bin2hex(random_bytes(32));
+
+    $expires = date('Y-m-d H:i:s', time() + (30 * 24 * 60 * 60));
+
+    $stmt = $pdo->prepare("
+        UPDATE users
+        SET remember_token = :token,
+            remember_expires = :expires
+        WHERE id = :id
+    ");
+
+    $stmt->execute([
+        ':token' => hash('sha256', $token),
+        ':expires' => $expires,
+        ':id' => $user['id']
+    ]);
+
+    setcookie(
+        'remember_token',
+        $token,
+        time() + (30 * 24 * 60 * 60),
+        '/',
+        '',
+        false,
+        true
+    );
+}
+
     header('Location: ../index.php');
     exit;
 }
