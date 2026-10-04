@@ -2,6 +2,21 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+if (!isset($_SESSION['login_attempts'])) {
+    $_SESSION['login_attempts'] = 0;
+}
+
+if ($_SESSION['login_attempts'] >= 3) {
+    $_SESSION['flash'] = [
+        'type' => 'error',
+        'pesan' => 'Terlalu banyak percobaan login gagal. Silakan coba lagi nanti.'
+    ];
+
+    header('Location: login.php');
+    exit;
+}
+
 require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
 
