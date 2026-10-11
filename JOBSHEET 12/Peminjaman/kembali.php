@@ -9,11 +9,14 @@ unset($_SESSION['flash']);
 
 $keyword = trim($_GET['q'] ?? '');
 
-$sqlDasar = "SELECT p.id, b.judul, a.nama, p.tanggal_pinjam
+
+$sqlDasar = "SELECT p.id, b.judul, a.nama, a.no_hp,
+                    p.tanggal_pinjam, p.tanggal_jatuh_tempo
              FROM peminjaman p
              JOIN buku b ON b.id = p.buku_id
              JOIN anggota a ON a.id = p.anggota_id
              WHERE p.status = 'dipinjam'";
+
 
 if ($keyword !== '') {
     $stmt = $pdo->prepare($sqlDasar . " AND (b.judul ILIKE :kw OR a.nama ILIKE :kw) ORDER BY p.tanggal_pinjam");
@@ -48,6 +51,8 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Buku</th>
                         <th>Tgl Pinjam</th>
                         <th>Aksi</th>
+                        <th>No. HP</th>
+                        <th>Jatuh Tempo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +65,19 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <td><?php echo e($trx['nama']); ?></td>
                             <td><?php echo e($trx['judul']); ?></td>
-                            <td><?php echo $trx['tanggal_pinjam']; ?></td>
+                            <td><?php echo e($trx['tanggal_pinjam']); ?></td>
+                            <td><?php echo e($trx['no_hp'] ?? '-'); ?></td>
+            <td>
+                <?php
+                $jatuhTempo = $trx['tanggal_jatuh_tempo'];
+                echo e($jatuhTempo);
+
+                if ($jatuhTempo < date('Y-m-d')) {
+                    echo ' (Terlambat)';
+                }
+                ?>
+            </td>
+
                             <td>
                                 <form method="post" action="proses_kembali.php">
                                     <?php echo csrf_field(); ?>
