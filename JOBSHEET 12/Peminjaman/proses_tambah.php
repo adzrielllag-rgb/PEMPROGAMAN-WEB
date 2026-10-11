@@ -27,6 +27,28 @@ try {
         throw new Exception('Stok buku tidak tersedia.');
     }
 
+    
+    // Cek apakah anggota memiliki peminjaman
+    // aktif yang terlambat lebih dari 14 hari.
+    $cekTerlambat = $pdo->prepare(
+        "SELECT COUNT(*)
+         FROM peminjaman
+         WHERE anggota_id = :anggota_id
+           AND status = 'dipinjam'
+           AND CURRENT_DATE - tanggal_pinjam > 14"
+    );
+
+    $cekTerlambat->execute([
+        'anggota_id' => $anggotaId
+    ]);
+
+    if ((int) $cekTerlambat->fetchColumn() > 0) {
+        throw new Exception(
+            'Anggota terlambat mengembalikan buku lebih dari 14 hari. Selesaikan pengembalian terlebih dahulu.'
+        );
+    }
+
+
     $insert = $pdo->prepare(
         "INSERT INTO peminjaman (buku_id, anggota_id, tanggal_pinjam, status)
          VALUES (:buku_id, :anggota_id, CURRENT_DATE, 'dipinjam')"
